@@ -1,0 +1,180 @@
+{
+  "auth": {
+    "login": "Login",
+    "signup": "Sign Up",
+    "email": "Email",
+    "password": "Password",
+    "nickname": "Nickname",
+    "confirmPassword": "Confirm Password",
+    "googleLogin": "Sign in with Google",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?",
+    "signupSuccess": "Sign up completed successfully!"
+  },
+  "home": {
+    "clarity": "Mind Clarity",
+    "title": "My MindCup",
+    "checkSurveyBtn": "Check Today's Mind Weather",
+    "addRecordBtn": "Record",
+    "unlockedWorld": "Unlocked World"
+  },
+  "status": {
+    "CLEAR": "The Silvery Minnow is swimming around actively and happily.",
+    "SLIGHTLY_CLOUDY": "Slightly cloudy, but the fish is staying and waving its tail slowly and peacefully.",
+    "CLOUDY": "Due to the slightly cloudy water, the fish is resting quietly in the center.",
+    "VERY_CLOUDY": "It is sleeping under the cozy water plants, waiting for tomorrow."
+  },
+  "survey": {
+    "title": "How is your mind weather today?",
+    "description": "0 means a completely clear and bright mind, 100 means full of worry. Select today's estimated turbidity.",
+    "placeholder": "Select today's turbidity (0 ~ 100)",
+    "submit": "Complete Diagnosis",
+    "cloudyTip": "Cloudy days are okay. Let's pour a small drop of clear water."
+  },
+  "record": {
+    "title": "Daily Record",
+    "typeSelection": "What kind of record is this?",
+    "turbid": "Cloudy Moment (Turbid)",
+    "clear": "Self-Care Action (Clear)",
+    "actionPlaceholder": "What happened? (e.g. Walking, Worrying)",
+    "intensity": "How much impact did it have on your mind?",
+    "memoPlaceholder": "Write more about your mind at that time (Optional)",
+    "submit": "Save Record",
+    "customActionBtn": "Add Custom Category",
+    "customActionTitle": "Add Custom Action",
+    "customActionName": "Action/Emotion Name",
+    "add": "Add",
+    "delete": "Delete"
+  },
+  "stats": {
+    "title": "Mind Report",
+    "weeklyAvg": "7-Day Avg Clarity",
+    "empty": "Not enough data recorded yet."
+  },
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "logout": "Logout",
+    "currentLanguage": "English"
+  },
+  "world": {
+    "small_cup": "Small Cup",
+    "large_cup": "Large Cup",
+    "aquarium": "Aquarium",
+    "pond": "Pond",
+    "stream": "Stream",
+    "river": "River",
+    "lake": "Lake",
+    "sea": "Sea",
+    "unlocked": "Your mind's water has grown slightly wider.",
+    "nextGuide": "Get a little clearer to unlock the next world.",
+    "avgClarity": "7-Day Avg Clarity",
+    "progressToNext": "To Next World",
+    "currentLevel": "Current World",
+    "decorateBtn": "Decorate",
+    "dexBtn": "Creature Book",
+    "detailBtn": "World Progress Info",
+    "noItem": "No items available to equip.",
+    "equip": "Equip",
+    "unequip": "Unequip",
+    "unlocked.stream": "A small stream has formed.",
+    "unlocked.river": "Small drops gathered to make a river.",
+    "unlocked.lake": "Your mind has become deep and wide.",
+    "unlocked.sea": "The ocean of your mind has opened."
+  },
+  "creature": {
+    "resting": "Creatures are sleeping peacefully.",
+    "hidden": "Creatures will appear as the water clears.",
+    "active": "Creatures are happily swimming in the clear water.",
+    "slow": "Creatures are staying quietly, swimming gently.",
+    "silver_minnow": "Silvery Minnow",
+    "baby_snail": "Baby Snail",
+    "guppy": "Yellow Guppy",
+    "goldfish": "Red Goldfish",
+    "frog": "Green Frog",
+    "carp": "Carp",
+    "stream_minnow": "Stream Minnow",
+    "crawfish": "Crawfish",
+    "river_carp": "River Carp",
+    "duck": "Spot-Billed Duck",
+    "turtle": "Turtle",
+    "swan": "Swan",
+    "whale": "Humpback Whale",
+    "jellyfish": "Moon Jellyfish",
+    "silhouette": "Mysterious Creature"
+  },
+  "item": {
+    "basic_pebble": "Basic Pebble",
+    "baby_sprout": "Water Sprout",
+    "warm_light": "Warm Light",
+    "lotus_leaf": "Lotus Leaf",
+    "stream_leaf": "Stream Leaf",
+    "river_reed": "Soft Reed",
+    "lake_moon": "Gentle Moon",
+    "sea_coral": "Pink Coral"
+  },
+  "mission": {
+    "todayTitle": "Today's Small Drops",
+    "complete": "Poured a small drop of clear water.",
+    "water": {
+      "title": "Drink a Glass of Water",
+      "desc": "Take a breath while taking calm sips of water."
+    },
+    "breath": {
+      "title": "Open Windows and Breathe",
+      "desc": "Take three deep breaths while feeling the breeze."
+    },
+    "walk": {
+      "title": "Take a 3-Minute Walk",
+      "desc": "Walk gently and focus on your physical senses."
+    }
+  },
+  "achievement": {
+    "title": "Footprints of Mind",
+    "unlocked": "A new footprint has appeared.",
+    "first_clear": {
+      "title": "First Clear Water",
+      "desc": "Recorded your first self-care action to clear your mind."
+    },
+    "7_clear": {
+      "title": "Small Recovery",
+      "desc": "Recorded clear water actions 7 times to protect yourself."
+    },
+    "cloudy_care": {
+      "title": "Storm Caretaker",
+      "desc": "Took care of yourself even on very cloudy days."
+    },
+    "big_rec": {
+      "title": "Clearing Up",
+      "desc": "Decreased turbidity by 10 or more in a single day."
+    },
+    "first_send": {
+      "title": "Send a Drop",
+      "desc": "Sent a clear water drop to a friend's cup."
+    },
+    "10_send": {
+      "title": "Warm Soul",
+      "desc": "Sent clear water drops 10 times to share warmth."
+    },
+    "stream": {
+      "title": "Small Stream",
+      "desc": "Unlocked the Stream world."
+    },
+    "river": {
+      "title": "Gentle River",
+      "desc": "Unlocked the River world."
+    },
+    "lake": {
+      "title": "Deep Lake",
+      "desc": "Unlocked the Lake world."
+    },
+    "sea": {
+      "title": "Ocean of Mind",
+      "desc": "Unlocked the Sea world."
+    }
+  },
+  "report": {
+    "weeklyTitle": "Weekly Flow of Mind",
+    "empty": "Not enough records to reflect yet. Start with today's first drop!"
+  }
+}

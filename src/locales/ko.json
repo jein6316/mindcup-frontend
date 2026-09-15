@@ -1,0 +1,180 @@
+{
+  "auth": {
+    "login": "로그인",
+    "signup": "회원가입",
+    "email": "이메일",
+    "password": "비밀번호",
+    "nickname": "닉네임",
+    "confirmPassword": "비밀번호 확인",
+    "googleLogin": "Google 계정으로 로그인",
+    "noAccount": "계정이 없으신가요?",
+    "hasAccount": "이미 계정이 있으신가요?",
+    "signupSuccess": "회원가입이 완료되었습니다!"
+  },
+  "home": {
+    "clarity": "마음 맑음도",
+    "title": "나의 마음컵",
+    "checkSurveyBtn": "오늘의 마음 날씨 체크",
+    "addRecordBtn": "기록하기",
+    "unlockedWorld": "해금된 세계"
+  },
+  "status": {
+    "CLEAR": "은빛 송사리가 기분 좋게 넓은 곳을 활발히 유영하고 있어요.",
+    "SLIGHTLY_CLOUDY": "약간 흐린 기운이 돌지만, 느긋하고 천천히 꼬리를 흔들며 머무르고 있어요.",
+    "CLOUDY": "조금 흐려진 날씨 탓에, 움직임을 최소화하고 물속 중앙에 잔잔히 머물러 있어요.",
+    "VERY_CLOUDY": "물이 어두워져서 무서운 것은 아니에요. 수초 숲 포근한 침대 아래에서 조용히 잠을 청하며 내일을 기다리고 있어요."
+  },
+  "survey": {
+    "title": "오늘의 마음 날씨는 어떤가요?",
+    "description": "0은 완전히 맑고 밝은 마음, 100은 걱정과 불안이 가득 찬 상태를 뜻해요. 오늘의 대략적인 탁도를 선택해 보세요.",
+    "placeholder": "현재 나의 탁도 선택 (0 ~ 100)",
+    "submit": "진단 완료",
+    "cloudyTip": "흐린 날도 괜찮아요. 작은 맑은물 하나를 부어볼까요?"
+  },
+  "record": {
+    "title": "일상 기록하기",
+    "typeSelection": "어떤 기록을 남길까요?",
+    "turbid": "마음이 흐려진 순간 (흐림)",
+    "clear": "나를 돌봐준 행동 (맑음)",
+    "actionPlaceholder": "어떤 일이 있었나요? (예: 산책, 걱정거리)",
+    "intensity": "그 일이 마음에 미친 영향의 크기",
+    "memoPlaceholder": "그때의 마음을 조금 더 자세히 적어보세요. (선택)",
+    "submit": "기록 저장",
+    "customActionBtn": "나만의 카테고리 추가",
+    "customActionTitle": "커스텀 행동 추가",
+    "customActionName": "행동/감정 명칭",
+    "add": "추가하기",
+    "delete": "삭제"
+  },
+  "stats": {
+    "title": "마음 리포트",
+    "weeklyAvg": "최근 7일 평균 맑음도",
+    "empty": "기록된 데이터가 충분하지 않습니다."
+  },
+  "settings": {
+    "title": "설정",
+    "language": "언어 설정",
+    "logout": "로그아웃",
+    "currentLanguage": "한국어"
+  },
+  "world": {
+    "small_cup": "작은 컵",
+    "large_cup": "큰 컵",
+    "aquarium": "어항",
+    "pond": "작은 연못",
+    "stream": "개울",
+    "river": "강",
+    "lake": "호수",
+    "sea": "바다",
+    "unlocked": "마음의 물이 조금 넓어졌어요.",
+    "nextGuide": "조금 더 맑아지면 새로운 세계가 열려요.",
+    "avgClarity": "7일 평균 맑음도",
+    "progressToNext": "다음 세계까지",
+    "currentLevel": "현재 세계",
+    "decorateBtn": "꾸미기",
+    "dexBtn": "생물 도감",
+    "detailBtn": "세계 성장 정보",
+    "noItem": "장착 가능한 아이템이 없습니다.",
+    "equip": "장착",
+    "unequip": "해제",
+    "unlocked.stream": "작은 물길이 생겼어요.",
+    "unlocked.river": "작은 한 방울들이 모여 강이 되었어요.",
+    "unlocked.lake": "마음의 물이 깊고 넓어졌어요.",
+    "unlocked.sea": "마음의 바다가 열렸어요."
+  },
+  "creature": {
+    "resting": "생물들이 가만히 단잠을 청하며 쉬고 있어요.",
+    "hidden": "물이 맑아지면 생물들이 다시 모습을 보여줄 거예요.",
+    "active": "생물들이 맑은 물속을 신나게 누비고 있어요.",
+    "slow": "생물들이 잔잔하게 헤엄치며 조용히 머무르고 있어요.",
+    "silver_minnow": "은빛 송사리",
+    "baby_snail": "아기 다슬기",
+    "guppy": "노란 구피",
+    "goldfish": "빨간 금붕어",
+    "frog": "초록 청개구리",
+    "carp": "큰 토종 붕어",
+    "stream_minnow": "버들치",
+    "crawfish": "참가재",
+    "river_carp": "잉어",
+    "duck": "흰뺨검둥오리",
+    "turtle": "남생이",
+    "swan": "백조",
+    "whale": "혹등고래",
+    "jellyfish": "보름달물해파리",
+    "silhouette": "신비로운 생물"
+  },
+  "item": {
+    "basic_pebble": "작은 조약돌",
+    "baby_sprout": "새싹 수초",
+    "warm_light": "은은한 조명",
+    "lotus_leaf": "동동 연잎",
+    "stream_leaf": "버들잎",
+    "river_reed": "부드러운 갈대",
+    "lake_moon": "잔잔한 달빛",
+    "sea_coral": "분홍 산호초"
+  },
+  "mission": {
+    "todayTitle": "오늘의 작은 맑은물",
+    "complete": "작은 맑은물을 부었어요.",
+    "water": {
+      "title": "물 한 잔 마시기",
+      "desc": "차분하게 한 모금씩 넘기며 숨을 돌려봐요."
+    },
+    "breath": {
+      "title": "창문 열고 숨 한번 고르기",
+      "desc": "불어오는 바람을 느끼며 깊은 호흡을 세 번 해봅니다."
+    },
+    "walk": {
+      "title": "3분 산책하기",
+      "desc": "가볍게 주변을 걸으며 몸의 감각에 집중해 봐요."
+    }
+  },
+  "achievement": {
+    "title": "마음의 발자국",
+    "unlocked": "새로운 흔적이 생겼어요.",
+    "first_clear": {
+      "title": "첫 맑은물",
+      "desc": "마음을 맑게 돌보는 행동을 처음으로 실천했어요."
+    },
+    "7_clear": {
+      "title": "작은 회복",
+      "desc": "맑은물 행동을 7번 꾸준히 기록하며 자신을 지켰어요."
+    },
+    "cloudy_care": {
+      "title": "흐린 날도 돌본 사람",
+      "desc": "마음이 흐렸던 순간에도 기록을 잊지 않고 돌보아주었어요."
+    },
+    "big_rec": {
+      "title": "다시 맑아지는 중",
+      "desc": "하루 동안 마음의 탁도를 10 이상 감소시켰습니다."
+    },
+    "first_send": {
+      "title": "한 방울의 마음",
+      "desc": "친구의 마음컵에 맑은 한 방울을 전송해주었어요."
+    },
+    "10_send": {
+      "title": "따뜻한 사람",
+      "desc": "맑은 물방울을 10번 전송해 타인과 마음을 포근히 나누었습니다."
+    },
+    "stream": {
+      "title": "작은 물길",
+      "desc": "개울 단계를 해금했습니다."
+    },
+    "river": {
+      "title": "잔잔한 강",
+      "desc": "강 단계를 해금했습니다."
+    },
+    "lake": {
+      "title": "깊은 호수",
+      "desc": "호수 단계를 해금했습니다."
+    },
+    "sea": {
+      "title": "마음의 바다",
+      "desc": "바다 단계를 해금했습니다."
+    }
+  },
+  "report": {
+    "weeklyTitle": "이번 주 마음의 흐름",
+    "empty": "아직 돌아볼 기록이 많지 않아요. 오늘의 한 방울부터 시작해볼까요?"
+  }
+}

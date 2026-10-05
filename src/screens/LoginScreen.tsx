@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Alert, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, TouchableOpacity } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { useAuthStore } from '../store/authStore';
 import { api } from '../api/api';
@@ -7,6 +7,9 @@ import { ScreenContainer } from '../components/ScreenContainer';
 import { CustomInput } from '../components/CustomInput';
 import { CustomButton } from '../components/CustomButton';
 import { Typography } from '../components/Typography';
+import { ErrorMessage } from '../components/ErrorMessage';
+import { validateEmail, validatePassword } from '../utils/validation';
+import { parseErrorMessage } from '../utils/errorUtils';
 
 export const LoginScreen = ({ navigation }: any) => {
   const { t } = useTranslation();
@@ -14,18 +17,37 @@ export const LoginScreen = ({ navigation }: any) => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  
+  // 에러 상태
+  const [emailError, setEmailError] = useState<string | null>(null);
+  const [passwordError, setPasswordError] = useState<string | null>(null);
+  const [serverError, setServerError] = useState<string | null>(null);
+
   const [loading, setLoading] = useState(false);
   const [googleLoading, setGoogleLoading] = useState(false);
 
   const handleLogin = async () => {
-    if (!email || !password) {
-      Alert.alert('Info', t('auth.email') + ', ' + t('auth.password') + '를 입력해주세요.');
+    // 1. 에러 상태 초기화
+    setEmailError(null);
+    setPasswordError(null);
+    setServerError(null);
+
+    // 2. 클라이언트 사전 유효성 검사 (Pre-validation)
+    const errEmail = validateEmail(email);
+    const errPassword = validatePassword(password);
+
+    if (errEmail || errPassword) {
+      setEmailError(errEmail);
+      setPasswordError(errPassword);
       return;
     }
 
     setLoading(true);
     try {
-      const response = await api.post('/api/v1/auth/login', { email, password });
+      const response = await api.post('/api/v1/auth/login', {
+        email: email.trim(),
+        password,
+      });
       const { accessToken, refreshToken } = (response as any).data;
       
       // 내 프로필 조회 API 동시 요청
@@ -36,13 +58,15 @@ export const LoginScreen = ({ navigation }: any) => {
 
       await setAuth(accessToken, refreshToken, user);
     } catch (error: any) {
-      Alert.alert('Error', error.message || '로그인에 실패했습니다.');
+      const parsedMsg = parseErrorMessage(error);
+      setServerError(parsedMsg);
     } finally {
       setLoading(false);
     }
   };
 
   const handleMockGoogleLogin = async () => {
+    setServerError(null);
     setGoogleLoading(true);
     try {
       // 로컬 테스트용 Mock Google ID Token 생성 및 백엔드 전송
@@ -57,7 +81,8 @@ export const LoginScreen = ({ navigation }: any) => {
 
       await setAuth(accessToken, refreshToken, user);
     } catch (error: any) {
-      Alert.alert('Error', error.message || 'Google 로그인 실패');
+      const parsedMsg = parseErrorMessage(error);
+      setServerError(parsedMsg);
     } finally {
       setGoogleLoading(false);
     }
@@ -73,16 +98,28 @@ export const LoginScreen = ({ navigation }: any) => {
       </View>
 
       <View style={styles.form}>
+        <ErrorMessage message={serverError} />
+
         <CustomInput
           placeholder={t('auth.email')}
           value={email}
-          onChangeText={setEmail}
+          onChangeText={(text) => {
+            setEmail(text);
+            if (emailError) setEmailError(null);
+            if (serverError) setServerError(null);
+          }}
+          error={emailError || undefined}
         />
         <CustomInput
           placeholder={t('auth.password')}
           value={password}
-          onChangeText={setPassword}
+          onChangeText={(text) => {
+            setPassword(text);
+            if (passwordError) setPasswordError(null);
+            if (serverError) setServerError(null);
+          }}
           secureTextEntry
+          error={passwordError || undefined}
         />
 
         <CustomButton
@@ -118,7 +155,7 @@ const styles = StyleSheet.create({
   },
   header: {
     alignItems: 'center',
-    marginBottom: 40,
+    marginBottom: 30,
   },
   title: {
     fontWeight: '800',

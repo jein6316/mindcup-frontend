@@ -1,45 +1,74 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Alert, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, TouchableOpacity } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { api } from '../api/api';
 import { ScreenContainer } from '../components/ScreenContainer';
 import { CustomInput } from '../components/CustomInput';
 import { CustomButton } from '../components/CustomButton';
 import { Typography } from '../components/Typography';
+import { ErrorMessage } from '../components/ErrorMessage';
+import { safeAlert } from '../utils/safeAlert';
+import {
+  validateEmail,
+  validatePassword,
+  validateConfirmPassword,
+  validateNickname,
+} from '../utils/validation';
+import { parseErrorMessage } from '../utils/errorUtils';
 
 export const SignupScreen = ({ navigation }: any) => {
   const { t } = useTranslation();
 
   const [email, setEmail] = useState('');
+  const [nickname, setNickname] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [nickname, setNickname] = useState('');
+
+  // 에러 상태
+  const [emailError, setEmailError] = useState<string | null>(null);
+  const [nicknameError, setNicknameError] = useState<string | null>(null);
+  const [passwordError, setPasswordError] = useState<string | null>(null);
+  const [confirmPasswordError, setConfirmPasswordError] = useState<string | null>(null);
+  const [serverError, setServerError] = useState<string | null>(null);
+
   const [loading, setLoading] = useState(false);
 
   const handleSignup = async () => {
-    if (!email || !password || !confirmPassword || !nickname) {
-      Alert.alert('Info', '모든 필드를 입력해 주세요.');
-      return;
-    }
+    // 1. 에러 상태 초기화
+    setEmailError(null);
+    setNicknameError(null);
+    setPasswordError(null);
+    setConfirmPasswordError(null);
+    setServerError(null);
 
-    if (password !== confirmPassword) {
-      Alert.alert('Info', '비밀번호가 일치하지 않습니다.');
+    // 2. 클라이언트 사전 유효성 검사 (Pre-validation)
+    const errEmail = validateEmail(email);
+    const errNickname = validateNickname(nickname);
+    const errPassword = validatePassword(password);
+    const errConfirmPassword = validateConfirmPassword(password, confirmPassword);
+
+    if (errEmail || errNickname || errPassword || errConfirmPassword) {
+      setEmailError(errEmail);
+      setNicknameError(errNickname);
+      setPasswordError(errPassword);
+      setConfirmPasswordError(errConfirmPassword);
       return;
     }
 
     setLoading(true);
     try {
       await api.post('/api/v1/auth/signup', {
-        email,
+        email: email.trim(),
         password,
-        nickname,
+        nickname: nickname.trim(),
       });
 
-      Alert.alert('Success', t('auth.signupSuccess'), [
-        { text: 'OK', onPress: () => navigation.navigate('Login') }
-      ]);
+      safeAlert('Success', t('auth.signupSuccess'), () => {
+        navigation.navigate('Login');
+      });
     } catch (error: any) {
-      Alert.alert('Error', error.message || '회원가입 실패');
+      const parsedMsg = parseErrorMessage(error);
+      setServerError(parsedMsg);
     } finally {
       setLoading(false);
     }
@@ -55,27 +84,49 @@ export const SignupScreen = ({ navigation }: any) => {
       </View>
 
       <View style={styles.form}>
+        <ErrorMessage message={serverError} />
+
         <CustomInput
           placeholder={t('auth.email')}
           value={email}
-          onChangeText={setEmail}
+          onChangeText={(text) => {
+            setEmail(text);
+            if (emailError) setEmailError(null);
+            if (serverError) setServerError(null);
+          }}
+          error={emailError || undefined}
         />
         <CustomInput
           placeholder={t('auth.nickname')}
           value={nickname}
-          onChangeText={setNickname}
+          onChangeText={(text) => {
+            setNickname(text);
+            if (nicknameError) setNicknameError(null);
+            if (serverError) setServerError(null);
+          }}
+          error={nicknameError || undefined}
         />
         <CustomInput
           placeholder={t('auth.password')}
           value={password}
-          onChangeText={setPassword}
+          onChangeText={(text) => {
+            setPassword(text);
+            if (passwordError) setPasswordError(null);
+            if (serverError) setServerError(null);
+          }}
           secureTextEntry
+          error={passwordError || undefined}
         />
         <CustomInput
           placeholder={t('auth.confirmPassword')}
           value={confirmPassword}
-          onChangeText={setConfirmPassword}
+          onChangeText={(text) => {
+            setConfirmPassword(text);
+            if (confirmPasswordError) setConfirmPasswordError(null);
+            if (serverError) setServerError(null);
+          }}
           secureTextEntry
+          error={confirmPasswordError || undefined}
         />
 
         <CustomButton

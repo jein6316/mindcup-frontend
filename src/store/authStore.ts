@@ -9,6 +9,7 @@ interface User {
   friendCode: string;
   languageSetting: string;
   unlockedWorldLevel: string;
+  role?: string;
 }
 
 interface AuthState {

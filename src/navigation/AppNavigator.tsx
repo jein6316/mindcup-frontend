@@ -23,22 +23,17 @@ import { CreatureDexScreen } from '../screens/CreatureDexScreen';
 import { WorldDecorateScreen } from '../screens/WorldDecorateScreen';
 import { AchievementScreen } from '../screens/AchievementScreen';
 import { WeeklyReportScreen } from '../screens/WeeklyReportScreen';
+import { AdminScreen } from '../screens/AdminScreen';
 import { Typography } from '../components/Typography';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
-// 1. 인증이 안 된 경우 (Auth Navigator)
-const AuthNavigator = () => (
-  <Stack.Navigator screenOptions={{ headerShown: false }}>
-    <Stack.Screen name="Login" component={LoginScreen} />
-    <Stack.Screen name="Signup" component={SignupScreen} />
-  </Stack.Navigator>
-);
-
-// 2. 메인 서비스 (Bottom Tab)
+// 1. 메인 서비스 (Bottom Tab)
 const MainTabNavigator = () => {
   const { t } = useTranslation();
+  const user = useAuthStore((state) => state.user);
+  const isAdmin = user?.role === 'ROLE_ADMIN';
 
   return (
     <Tab.Navigator
@@ -59,6 +54,7 @@ const MainTabNavigator = () => {
           if (route.name === 'HomeTab') label = t('home.title');
           else if (route.name === 'FriendsTab') label = "친구";
           else if (route.name === 'StatsTab') label = t('stats.title');
+          else if (route.name === 'AdminTab') label = "⚙️ 관리자";
           else if (route.name === 'SettingsTab') label = t('settings.title');
 
           return (
@@ -67,18 +63,19 @@ const MainTabNavigator = () => {
             </Typography>
           );
         },
-        tabBarIcon: () => null, // 벡터 아이콘 설치 충돌 방지를 위해 라벨만 노출
+        tabBarIcon: () => null, // 라벨 위주 스타일 적용
       })}
     >
       <Tab.Screen name="HomeTab" component={HomeScreen} />
       <Tab.Screen name="FriendsTab" component={FriendsScreen} />
       <Tab.Screen name="StatsTab" component={StatsScreen} />
+      {isAdmin && <Tab.Screen name="AdminTab" component={AdminScreen} />}
       <Tab.Screen name="SettingsTab" component={SettingsScreen} />
     </Tab.Navigator>
   );
 };
 
-// 3. 전체 통합 라우팅
+// 2. 전체 통합 라우팅
 export const AppNavigator = () => {
   const accessToken = useAuthStore((state) => state.accessToken);
   const isInitialized = useAuthStore((state) => state.isInitialized);
@@ -118,6 +115,7 @@ export const AppNavigator = () => {
             <Stack.Screen name="WorldDecorate" component={WorldDecorateScreen} />
             <Stack.Screen name="Achievement" component={AchievementScreen} />
             <Stack.Screen name="WeeklyReport" component={WeeklyReportScreen} />
+            <Stack.Screen name="Admin" component={AdminScreen} />
           </>
         ) : (
           <>

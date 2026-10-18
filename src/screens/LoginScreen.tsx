@@ -25,6 +25,7 @@ export const LoginScreen = ({ navigation }: any) => {
 
   const [loading, setLoading] = useState(false);
   const [googleLoading, setGoogleLoading] = useState(false);
+  const isMockGoogleLoginEnabled = process.env.EXPO_PUBLIC_ENABLE_MOCK_GOOGLE === 'true';
 
   const handleLogin = async () => {
     // 1. 에러 상태 초기화
@@ -129,13 +130,15 @@ export const LoginScreen = ({ navigation }: any) => {
           style={styles.submitBtn}
         />
 
-        <CustomButton
-          title={t('auth.googleLogin')}
-          onPress={handleMockGoogleLogin}
-          loading={googleLoading}
-          variant="secondary"
-          style={styles.googleBtn}
-        />
+        {isMockGoogleLoginEnabled && (
+          <CustomButton
+            title={`${t('auth.googleLogin')} (개발용)`}
+            onPress={handleMockGoogleLogin}
+            loading={googleLoading}
+            variant="secondary"
+            style={styles.googleBtn}
+          />
+        )}
       </View>
 
       <View style={styles.footer}>
